@@ -1,5 +1,13 @@
-from flask import Blueprint
+import mysql.connector as mysql
+from os import getenv
 
-college = Blueprint('college', __name__)
+db = mysql.connect(
+            host = getenv('DB_HOST'),
+            user = getenv('DB_USERNAME'),
+            password = getenv('DB_PASSWORD'),
+            database = getenv('DB_NAME')
+        )
+cursor = db.cursor()
 
-from . import routes
+
+
